@@ -4,7 +4,7 @@ coverY: 0
 
 # README
 
-## Spring Document 해석 🧐
+## Spring Document 입맛대로 해석하기 🧐
 
 ### Spring Framework Documentation (5.3.15)
 
