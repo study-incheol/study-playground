@@ -6,6 +6,8 @@ coverY: 0
 
 ## Spring Document 입맛대로 해석하기 🧐
 
+> https://spring-doc.gitbook.io/kr/
+
 ### Spring Framework Documentation (5.3.15)
 
 * Core
