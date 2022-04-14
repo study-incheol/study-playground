@@ -7,5 +7,5 @@
     * [1.2. Using the Container](core/ioc-container/1.2_using_the_container.md)
     * [1.3. Bean Overview](core/ioc-container/1.3_bean_overview.md)
     * [1.4. Dependencies](core/ioc-container/1.4_dependencies.md)
-    * [1.5. Dependencies](core/ioc-container/1.5_bean_scopes.md)
-    * [1.6. Dependencies](core/ioc-container/1.6_customizing_the_nature_of_a_bean.md)
+    * [1.5. Bean Scopes](core/ioc-container/1.5_bean_scopes.md)
+    * [1.6. Customizing the Nature of a Bean](core/ioc-container/1.6_customizing_the_nature_of_a_bean.md)
