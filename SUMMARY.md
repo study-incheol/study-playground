@@ -11,3 +11,5 @@
     * [1.6. Customizing the Nature of a Bean](core/ioc-container/1.6\_customizing\_the\_nature\_of\_a\_bean.md)
     * [1.7. Bean Definition Inheritance](core/ioc-container/1.7\_bean\_definition\_inheritance.md)
     * [1.8. Container Extension Points](core/ioc-container/1.8\_container\_extension\_points.md)
+    * [1.9. Annotation-based Container Configuration](core/ioc-container/1.9\_annotation-based\_container\_configuration.md)
+  
