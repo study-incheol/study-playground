@@ -12,4 +12,6 @@
     * [1.7. Bean Definition Inheritance](core/ioc-container/1.7\_bean\_definition\_inheritance.md)
     * [1.8. Container Extension Points](core/ioc-container/1.8\_container\_extension\_points.md)
     * [1.9. Annotation-based Container Configuration](core/ioc-container/1.9\_annotation-based\_container\_configuration.md)
+    * [1.10. Classpath Scanning and Managed Components](core/ioc-container/1.10\_classpath\_scanning\_and\_managed\_components.md)
+    * [1.11. Using JSR 330 Standard Annotations](core/ioc-container/1.11\_using\_jsr\_330\_standard\_annotations.md)
   
