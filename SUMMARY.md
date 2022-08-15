@@ -14,4 +14,5 @@
     * [1.9. Annotation-based Container Configuration](core/ioc-container/1.9\_annotation-based\_container\_configuration.md)
     * [1.10. Classpath Scanning and Managed Components](core/ioc-container/1.10\_classpath\_scanning\_and\_managed\_components.md)
     * [1.11. Using JSR 330 Standard Annotations](core/ioc-container/1.11\_using\_jsr\_330\_standard\_annotations.md)
+    * [1.12. Java-based Container Configuration](core/ioc-container/1.12_java_based_container_configuration.md)
   
