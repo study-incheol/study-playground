@@ -15,4 +15,5 @@
     * [1.10. Classpath Scanning and Managed Components](core/ioc-container/1.10\_classpath\_scanning\_and\_managed\_components.md)
     * [1.11. Using JSR 330 Standard Annotations](core/ioc-container/1.11\_using\_jsr\_330\_standard\_annotations.md)
     * [1.12. Java-based Container Configuration](core/ioc-container/1.12_java_based_container_configuration.md)
-  
+    * [1.13. Environment Abstraction](core/ioc-container/1.13_environment_abstraction.md)
+    * [1.14. Registering a LoadTimeWeaver](core/ioc-container/1.14_registering_a_loadtimeweaver.md)
