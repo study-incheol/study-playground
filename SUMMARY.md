@@ -17,3 +17,5 @@
     * [1.12. Java-based Container Configuration](core/ioc-container/1.12_java_based_container_configuration.md)
     * [1.13. Environment Abstraction](core/ioc-container/1.13_environment_abstraction.md)
     * [1.14. Registering a LoadTimeWeaver](core/ioc-container/1.14_registering_a_loadtimeweaver.md)
+    * [1.15. Additional Capabilities of the ApplicationContext](core/ioc-container/1.15_additional_capabilities_of_the_application_context.md)
+    * [1.16. The BeanFactory API](core/ioc-container/1.16_the_beanfactory_api.md)
