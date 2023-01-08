@@ -19,7 +19,7 @@
 
 ## 1.1.1 FTGO 애플리케이션 아키텍처
 
-![KakaoTalk_Photo_2023-01-08-15-19-21 002.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/52d49a23-24c4-4a9b-9cc5-5354c49a71aa/KakaoTalk_Photo_2023-01-08-15-19-21_002.jpeg)
+![KakaoTalk_Photo_2023-01-08-15-19-21 002.jpeg](../images/msa/image1.jpeg)
 
 ## 1.1.2 모놀리식 아키텍처의 장점
 
@@ -38,7 +38,7 @@
 
 - FTGO는 여느 개발자가 완전히 이해할 수 없을 정도로 내용이 방대해서 버그를 고치고 새 기능을 정확하게 구현하기가 갈수록 힘들고 시간도 오래 걸린다
 
-  ![KakaoTalk_Photo_2023-01-08-15-19-21 003.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db07645b-0441-4a87-be4d-59143bc0c35f/KakaoTalk_Photo_2023-01-08-15-19-21_003.jpeg)
+  ![KakaoTalk_Photo_2023-01-08-15-19-21 003.jpeg](../images/msa/image2.jpeg)
 
 - 그림추가
 
@@ -87,7 +87,7 @@
 
 - 마이크로서비스 아키텍처는 확장 큐브라는 3차원 확장 모델이 있다
 
-![KakaoTalk_Photo_2023-01-08-15-19-21 001.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8bb6eb20-0c81-480e-b8c7-493b1b1481de/KakaoTalk_Photo_2023-01-08-15-19-21_001.jpeg)
+![KakaoTalk_Photo_2023-01-08-15-19-21 001.jpeg](../images/msa/image3.jpeg)
 
 - X축 확장 : 다중 인스턴스에 고루 요청 분산
 - Z축 확장 : 요청 속성별 라우팅
@@ -226,7 +226,7 @@
 
 - 패턴 언어는 여러 그룹의 패턴으로 구성된다
 
-  ![KakaoTalk_Photo_2023-01-08-15-17-15.jpeg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d701c5bc-7a13-4dc2-95ce-4a17c7eb7188/KakaoTalk_Photo_2023-01-08-15-17-15.jpeg)
+  ![KakaoTalk_Photo_2023-01-08-15-17-15.jpeg](../images/msa/image4.jpeg)
 
 - 인프라 패턴 : 주로 개발 영역 밖의 인프라 문제를 해결
 - 애플리케이션 인프라 : 개발에도 영향을 미치는 인프라 문제를 해결
