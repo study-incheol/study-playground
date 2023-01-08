@@ -20,3 +20,4 @@
     * [1.15. Additional Capabilities of the ApplicationContext](core/ioc-container/1.15_additional_capabilities_of_the_application_context.md)
     * [1.16. The BeanFactory API](core/ioc-container/1.16_the_beanfactory_api.md)
 * [MSA-PATTERN-REVIEW](msa-pattern/README.md)
+  * [1장 모놀리식 지옥에서 벗어나라](msa-pattern/chap1.md)
