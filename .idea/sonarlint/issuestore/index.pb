@@ -1,0 +1,17 @@
+
+>
+core/README.md,0/1/015f128e905f1deb77421262e8ffdd730674ba4c
+b
+2core/ioc-container/1.13_environment_abstraction.md,8/4/841f4b6724dd935dcb002468653fe0cb607f234c
+m
+=core/ioc-container/1.12_java_based_container_configuration.md,2/e/2ecd25ae994afb1898977b41a50bcb320d957405
+u
+Ecore/ioc-container/1.1_intro_to_the_spring_ioc_container_and_beans.md,5/d/5dda1a8a36b999d8902c78cc0ffdc6e2b6f02594
+]
+-core/ioc-container/1.2_using_the_container.md,6/8/68c788c01c983b7af5fb56ca0542374378f01640
+W
+'core/ioc-container/1.3_bean_overview.md,1/e/1eef8c6ac2847a2d20a7c799e940205f577d71cc
+V
+&core/ioc-container/1.4_dependencies.md,b/b/bb3a218a430687d7d84d2f1f869f79b2321b8c12
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

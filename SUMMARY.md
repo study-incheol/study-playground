@@ -21,3 +21,4 @@
     * [1.16. The BeanFactory API](core/ioc-container/1.16_the_beanfactory_api.md)
 * [MSA-PATTERN-REVIEW](msa-pattern/README.md)
   * [1장 모놀리식 지옥에서 벗어나라](msa-pattern/chap1.md)
+  * [2장 분해 전략](msa-pattern/chap2.md)
