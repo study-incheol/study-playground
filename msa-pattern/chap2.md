@@ -62,6 +62,7 @@
 - 인바운드 어댑터 : 외부에서 들어오는 요청을 처리하는 곳
 - 아웃바운드 어댑터 : 포트를 통해서 실제로 구현 로직을 처리하는 곳
 - 포트 : 비즈니스 로직을 제공하면서 외부 영역과 연계하는 곳
+
 - 참고
     - https://zkdlu.tistory.com/4
     - https://www.youtube.com/watch?v=vwgNI9w_bsQ&t=1s&ab_channel=NHNCloud
