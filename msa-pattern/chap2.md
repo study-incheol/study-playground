@@ -138,18 +138,18 @@
 
 💡 **사용자 시나리오(주문하기)**
 
-전제(Given)
-소비자가 있다
-음식점이 있다
-음식점은 소비자의 주소로 제시간에 음식을 배달할 수 있다
-주문 총액이 음식점의 최소 주문량 조건에 부합한다
-조건(When)
-소비자가 음식점에 음식을 주문한다
-결과(Then)
-소비자 신용카드가 승인된다
-주문이 PENDING_ACCEPTANCE 상태로 생성된다
-생성된 주문이 소비자와 연관된다
-생성된 주문이 음식점과 연관된다
+- 전제(Given)
+  - 소비자가 있다 
+  - 음식점이 있다 
+  - 음식점은 소비자의 주소로 제시간에 음식을 배달할 수 있다 
+  - 주문 총액이 음식점의 최소 주문량 조건에 부합한다 
+- 조건(When)
+  - 소비자가 음식점에 음식을 주문한다
+- 결과(Then)
+  - 소비자 신용카드가 승인된다 
+  - 주문이 PENDING_ACCEPTANCE 상태로 생성된다 
+  - 생성된 주문이 소비자와 연관된다 
+  - 생성된 주문이 음식점과 연관된다
 
 {% endhint %}
 
@@ -161,20 +161,22 @@
 
 💡 **사용자 시나리오(주문 접수)**
 
-전체(Given)
-현재 주문은 PENDING_ACCEPTANCE 상태다
-주문 배달 가능한 배달원이 있다
-조건(When)
-주문을 접수한 음식점은 언제까지 음식을 준비할 수 있다고 약속한다
-결과(Then)
-주문 상태가 ACCEPTED로 변경된다
-주문의 promiseByTime 값을 음식점이 준비하기로 약속한 시간으로 업데이트한다
-주문을 배달할 배달원을 배정한다
+- 전체(Given)
+  - 현재 주문은 PENDING_ACCEPTANCE 상태다 
+  - 주문 배달 가능한 배달원이 있다 
+- 조건(When)
+  - 주문을 접수한 음식점은 언제까지 음식을 준비할 수 있다고 약속한다 
+- 결과(Then)
+  - 주문 상태가 ACCEPTED로 변경된다 
+  - 주문의 promiseByTime 값을 음식점이 준비하기로 약속한 시간으로 업데이트한다 
+  - 주문을 배달할 배달원을 배정한다
 
 {% endhint %}
 
 - 시나리오를 보니 Courier(배달원), Delivery(배달) 클래스가 추가되었다.
 - 또한 MenuItem(메뉴 항목), Address(주소) 등 여타 클래스도 추가되었다
+
+
 
   ![KakaoTalk_Photo_2023-01-08-19-38-01.jpeg](../images/msa/images2-3.jpeg)
 
@@ -302,8 +304,10 @@
     - 가장 좋은 방법은 DDD를 적용하여 각 서비스를 자체 도메인 모델을 갖고 있는 개별 하위 도메인으로 취급하는 것이다
     - 즉, 주문 서비스와 연관된 서비스는 모두 각자 버전의 Order 클래스를 가진 도메인 모델을 두는 것이다
     - 배달 서비스는 다른 주문 속성에는 전혀 관심이 없다
+
     
-    ![KakaoTalk_Photo_2023-01-10-23-10-52.jpeg](../images/msa/images2-6.jpeg)
+![KakaoTalk_Photo_2023-01-10-23-10-52.jpeg](../images/msa/images2-6.jpeg)
+
         
 
 ## 서비스 API 정의
@@ -322,11 +326,8 @@
     | 소비자 서비스 | createConsumer() |
     | 주문 서비스 | createOrder() |
     | 음식점 서비스 | findAvailableRestrants() |
-    | 주방 서비스 | acceptOrder()
-    noteOrderReadyForPickUp() |
-    | 배달 서비스 | noteUpdatedLocation()
-    noteDeliveryPickedUp()
-    noteDeliveryDelivered() |
+    | 주방 서비스 | acceptOrder(), noteOrderReadyForPickUp() |
+    | 배달 서비스 | noteUpdatedLocation(), noteDeliveryPickedUp(), noteDeliveryDelivered() |
 
 ### 서비스 간 협동 지원에 필요한 API 확정
 
@@ -338,23 +339,14 @@
     - 회계 서비스 : 소비자 신용카드를 승인한다
         
         
-        | 서비스 | 작업 | 협동자 |
-        | --- | --- | --- |
-        | 소비자 서비스 | verifyConsumerDetails() | - |
-        | 주문 서비스 | createOrder() | 소비자 서비스 : verifyConsumerDetails()
-        음식점 서비스 : verifyOrderDetails()
-        주방 서비스 : createTicket()
-        회계 서비스 : authorizaCard() |
-        | 음식점 서비스 | findAvailavleRestrants()
-        verifyOrderDetails() | - |
-        | 주방 서비스 | createTicket()
-        acceptOrder()
-        noteOrderReadyForPickup() | 배달 서비스 : scheduleDelivery() |
-        | 배달 서비스 | scheduleDelivery()
-        noteUpdatedLocation()
-        noteDeliveryPickedUp()
-        noteDeliveryDelivered() | - |
-        | 회계 서비스 | authorizeCard() | - |
+    | 서비스 | 작업 | 협동자 |
+    | --- | --- | --- |
+    | 소비자 서비스 | verifyConsumerDetails() | - |
+    | 주문 서비스 | createOrder() | 소비자 서비스 : verifyConsumerDetails() , 음식점 서비스 : verifyOrderDetails(), 주방 서비스 : createTicket() , 회계 서비스 : authorizaCard() |
+    | 음식점 서비스 | findAvailavleRestrants(), verifyOrderDetails() | - |
+    | 주방 서비스 | createTicket(), acceptOrder(), noteOrderReadyForPickup() | 배달 서비스 : scheduleDelivery() |
+    | 배달 서비스 | scheduleDelivery(), noteUpdatedLocation(), noteDeliveryPickedUp(), noteDeliveryDelivered() | - |
+    | 회계 서비스 | authorizeCard() | - |
 
 - 3장에서는 REST 같은 동기 메커니즘, 메시지 브로커를 이용한 비동기 메시징 등 구체적인 IPC 기술을 다룬다
 - 7장에서는 CQRS 패턴을 통해서 음식점 서비스가 자신의 데이터를 업데이트할 때마다 발행한 이벤트를 주문 서비스가 구독하면 레플리카를 항상 최신으로 유지하게 된다

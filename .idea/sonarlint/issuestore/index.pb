@@ -15,3 +15,5 @@ V
 &core/ioc-container/1.4_dependencies.md,b/b/bb3a218a430687d7d84d2f1f869f79b2321b8c12
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+E
+msa-pattern/README.md,6/c/6c95c53e22a87594d304762d795c71009b826c2f
