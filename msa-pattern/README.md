@@ -1,11 +1,5 @@
 # 마이크로 서비스 패턴
 
----
-coverY: 0
----
-
-# README
-
 ## 마이크로 서비스 패턴 리뷰하기
 
 > http://www.yes24.com/Product/Goods/86542732
