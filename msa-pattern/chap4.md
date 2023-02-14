@@ -23,14 +23,13 @@ createOrder() : 주문 가능한 소비자인지 확인 -> 주문 내역 확인 
 > 예전에는 분산 트랜잭션을 이용해서 여러 서비스, DB, 메시지 브로커에 걸쳐 데이터 일관성을 유지했음
 
 #### XA 트랜잭션 - 2PC(2-Phase Commit)
+![images4-transaction.png](../images/msa/images4-transaction.png)
 - 조정자(coordinator), 참가자(participant)로 구성
 - 1단계
     - 각 노드에 prepare 요청을 보내어 commit 할 수 있는지 질의
 - 2단계
     - 모든 노드가 "yes"라고 대답하여 커밋할 준비가 되었다고 하면 트랜잭션 매니저는 커밋 요청을 전송하고 커밋이 수행됨
     - 한 참가라도 "no"라고 대답하면 모든 노드에 중단 요청을 보냄
-
-![images4-transaction.png](../images/msa/images4-transaction.png)
 
 #### 문제점
 - NoSQL DB나 현대 메시지 브로커는 분산 트랜잭션을 지원하지 않음
