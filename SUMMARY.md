@@ -24,3 +24,4 @@
   * [2장 분해 전략](msa-pattern/chap2.md)
   * [3장 프로세스 간 통신](msa-pattern/chap3.md)
   * [4장 트랜잭션 관리: 사가](msa-pattern/chap4.md)
+  * [5장 비지니스 로직 구성 패턴](msa-pattern/chap5.md)
