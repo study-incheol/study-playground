@@ -305,6 +305,8 @@
 
 ### 참고
 * 절차 지향적, 객체지향적 : https://live-everyday.tistory.com/236
+* optimistic lock : https://en.wikipedia.org/wiki/Concurrency_control#Categories
+
 
 
 
