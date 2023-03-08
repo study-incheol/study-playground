@@ -17,3 +17,7 @@ V
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 E
 msa-pattern/README.md,6/c/6c95c53e22a87594d304762d795c71009b826c2f
+D
+msa-pattern/chap1.md,c/3/c3c850f0222795fac032013516dc76533a681c75
+D
+msa-pattern/chap2.md,9/7/976cb773efaab098c29aa1b45c274ff36c624d7c
