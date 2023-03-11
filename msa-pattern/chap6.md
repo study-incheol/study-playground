@@ -220,8 +220,8 @@ public class OrderServiceEventHandlers {
 
 - 사가 오케스트레이터는 애그리거트가 발생시킨 이벤트를 구독할 수 있지만, 그러면 두 가지 문제가 생긴다
   1. 사가 커맨드가 실제로 애그리거트 상태를 변경하지 않을지도 모른다. 이럴 경우 애그리거트는 이벤트를 발생시키지 않으니 사가 오케스트레이터에는 아무 응답도 전송되지 않는다
-  2. 이벤트 소싱을 이용하는 사가 참여자와 그렇지 않은 참여자를 사가 오케스트레이터가 다르게 취습해야 한다. 사가 오케스트레이터가 도메인 이벤트를 수신하려면 자신의 응답 채널뿐만 아니라, 애그리거트의 이벤트 채널도 함께 구독해야 하기 때문이다
-- 사가 참여자는 응답 메시지를 직접 보내느 것이 아니라 다음 2단계 프로세스를 거쳐야 한다
+  2. 이벤트 소싱을 이용하는 사가 참여자와 그렇지 않은 참여자를 사가 오케스트레이터가 다르게 취급해야 한다. 사가 오케스트레이터가 도메인 이벤트를 수신하려면 자신의 응답 채널뿐만 아니라, 애그리거트의 이벤트 채널도 함께 구독해야 하기 때문이다
+- 사가 참여자는 응답 메시지를 직접 보내는 것이 아니라 다음 2단계 프로세스를 거쳐야 한다
   1. 사가 커맨드 핸들러가 애그리거트를 생성/수정할 때, 애그리거트가 발생시킨 진짜 이벤트와 가짜 이벤트 SagaReplyRequested를 모두 이벤트 저장소에 저장한다
   2. SagaReplyRequested 이벤트 핸들러는 이벤트에 포함된 데이터로 응답 메시지를 만들어 사가 오케스트레이터의 응답 채널에 출력한다
 
@@ -236,8 +236,8 @@ public class OrderServiceEventHandlers {
 
 - 그림을 보면 주문 생성 사가와 회계 서비스가 서로 어떻게 소통하는지 알 수 있다
   1. 주문 생성 사가가 계좌 인증 커맨드를 메시징 채널을 통해 회계 서비스로 보낸다. 이벤추에이트 사가 프레임워크의 SagaCommandDispatcher는 AccountingServiceCommandHandler를 호출하여 커맨드 메시지를 처리한다
-  2. AccountingServiceCommandHandler는 주어진 Accounting 애그리거츠로 커맨드를 전송한다
-  3. 애그리거트가 AccountAuthorizedEvent와 SagaReplyRequrestedEvent 두 이벤트를 발생시킨다
+  2. AccountingServiceCommandHandler는 주어진 Accounting 애그리거트로 커맨드를 전송한다
+  3. 애그리거트가 AccountAuthorizedEvent 와 SagaReplyRequestedEvent 두 이벤트를 발생시킨다
   4. SagaReplyRequested 이벤트 핸들러는 주문 생성 사가에 응답 메시지를 전송하여 SagaReplyRequestedEvent를 처리한다
 
 ```jsx
@@ -255,7 +255,8 @@ public class AccountingServiceCommandHandler {
 					.build());
 		}
 
-...
+    ...
+}
 ```
 
 - authorize()는 AggregateRepository를 호출하여 Account 애그리거트를 업데이트한다
@@ -276,15 +277,15 @@ public class AccountingServiceCommandHandler {
 ## 커맨드 메시지를 확실하게 전송
 
 - 다음은 어떻게 사가 상태를 원자적으로 업데이트하고 커맨드를 전송하는가 하는 문제이다
-- 이벤추에이트 트램 기반의 사가는 오케스트레이터를 업데이트하고 커맨드 메시지를 메시지 테이블에 삽입하는 작업을 한 트랜잭션으로 묶어 수행한다
+- 이벤추에이트 트램 기반의 사가는 오케스트레이터를 업데이트하고 커맨드 메시지를 메시지 테이블에 삽입하는 작업을 한 트랜잭션으로 묶어 수행해야 한다
 - 오케스트레이터가 트랜잭션을 보장하기 위해서는 전송할 커맨드를 SagaCommandEvent에 저장하면 해결할 수 있다
 
 ![그림6-7](../images/msa/6-7.png)
 
-- 사가 오케스트레이터는 다음 두 단계로 커맨드를 전송한다
-  1. 사가 오케스트레이터가 전송하려는 각 커맨드마다 SagaCommandEvent를 발생시킨다. SagaCommandEvent에는 목적지 채널, 커맨드 객체 등 커맨드 전송에 필요한 데이터가 모두 담겨 있다. 이런 이벤트는 이벤트 저장소에 저장된다
-  2. 이벤트 핸들러는 SagaCommandEvent 처리 후 커맨드 메시지를 목적지 메시지 채널로 보낸다
-- 동일한 이벤트를 받아 여러 번 이벤트 핸들러가 호출될 수 있는 구조이기 때문에 SagaCommandEvent 핸들러가 중복된 커맨드 메시지를 전송할 수도 있다
+### 사가 오케스트레이터는 다음 두 단계로 커맨드를 전송한다
+1. 사가 오케스트레이터가 전송하려는 각 커맨드마다 SagaCommandEvent를 발생시킨다. SagaCommandEvent에는 목적지 채널, 커맨드 객체 등 커맨드 전송에 필요한 데이터가 모두 담겨 있다. 이런 이벤트는 이벤트 저장소에 저장된다
+2. 이벤트 핸들러는 SagaCommandEvent 처리 후 커맨드 메시지를 목적지 메시지 채널로 보낸다
+
 
 # 마치며
 
