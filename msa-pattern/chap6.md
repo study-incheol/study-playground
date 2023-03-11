@@ -242,20 +242,19 @@ public class OrderServiceEventHandlers {
 
 ```jsx
 public class AccountingServiceCommandHandler {
+  @Autowired
+  private AggregateRepository<Account, AccountCommand> accountRepository;
 
-	@Autowired
-	private AggregateRepository<Account, AccountCommand> accountRepository;
+  public void authorize(CommandMessage<AuthorizeCommand> cm) {
+      AuthorizeCommand command = cm.getCommand();
+      accountRepository.update(command.getOrderId(), command,
+          replyingTo(cm)
+              .catching(AccountDisabledException.class,
+                  () -> withFailure(new AccountDisabledReply()))
+                  .build());
+      }
 
-	public void authorize(CommandMessage<AuthorizeCommand> cm) {
-		AuthorizeCommand command = cm.getCommand();
-		accountRepository.update(command.getOrderId(), command,
-			replyingTo(cm)
-				.catching(AccountDisabledException.class,
-					() -> withFailure(new AccountDisabledReply()))
-					.build());
-		}
-
-    ...
+  ...
 }
 ```
 
