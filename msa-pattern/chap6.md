@@ -260,7 +260,6 @@ public class AccountingServiceCommandHandler {
 
 - authorize()는 AggregateRepository를 호출하여 Account 애그리거트를 업데이트한다
 - update()에 전달된 세 번째 인수 UpdateOptions는 다음 표현식으로 계산한다
-- UpdateOptions는 다음과 같은 일을 수행하기 위해 update()를 구성한다
   1. 메시지가 꼭 한 번만 처리되도록 메시지 ID를 멱등성 키로 사용한다
   2. 이벤트 저장소에 저장된 이벤트 목록에 가짜 이벤트 SagaReplyRequestedEvent를 추가한다. SagaReplyRequestedEventHandler가 이 가짜 이벤트를 받으면 CreateOrderSaga의 응답 채널로 응답을 보낸다
   3. 애그리거트가 AccountDisabledException을 던질 때 기본 에러 응답 대신 AccountDisabledReply를 전송한다
