@@ -26,3 +26,4 @@
   * [4장 트랜잭션 관리: 사가](msa-pattern/chap4.md)
   * [5장 비지니스 로직 구성 패턴](msa-pattern/chap5.md)
   * [6장 비즈니스 로직 개발: 이벤트 소싱](msa-pattern/chap6.md)
+  * [7장 마이크로서비스 쿼리 구현](msa-pattern/chap7.md)
