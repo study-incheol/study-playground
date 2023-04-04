@@ -249,3 +249,75 @@
   - 2단계는 이렇게 계산된 스냅샷과 그 이후 발생한 이벤트를 이용하여 뷰를 생성한다
   
 ## CQRS 뷰 구현: AWS DynamoDB 응용
+
+- DynamoDB는 아마존 클라우드에서 서비스로 사용 가능한 확장성이 우수한 NoSQL DB이다. 데이터 모델은 JSON 처럼 계층적인 이름-값 쌍이 포함된 테이블로 구성된다
+- AWS DynamoDB를 이용하여 findOrderHistory() 쿼리 작업의 CQRS 뷰를 구현할 때 고민해야할 이슈를 살펴보자
+- findOrderHistory()의 CQRS 뷰는 여러 서비스의 이벤트를 소비하기 때문에 스탠드얼론 주문 뷰 서비스로 구현한다
+- 이 서비스에는 findOrderHistory(), findOrder() 두 작업이 구현된 API가 있다. findOrder()는 API 조합 패턴으로 구현할 수도 있지만, 이 뷰는 이 작업을 무료로 제공한다
+- 주문 이력 서비스 설계
+
+![그림7-8](../images/msa/images7-8.png)
+
+- OrderHistoryEventHandler : 여러 서비스가 발행한 이벤트를 구독하며 OrderHistoryDAO를 호출한다
+- OrderHistoryQuery API 모듈 : 앞서 설명한 REST 끝점을 구현한다
+- OrderHistoryDataAccess : DynamoDB 테이블 및 관련 헬퍼 클래스를 조회/수정하는 메서드가 정의된 OrderHistoryDAO를 포함한다
+- ftgo-order-history : 주문이 저장된 DynamoDB 테이블
+
+### OrderHistoryEventHandlers 모듈
+
+- OrderHistoryEventHandlers는 이벤트를 소비해서 DynamoDB 테이블을 업데이트하는 이벤트 핸들러로 구성된 모듈이다. 이벤트로부터 전달받은 인수를 OrderHistoryDao 메서드에 넘겨 호출하는 단순 메서드이다
+
+![그림7-9](../images/msa/images7-9.png)
+
+- 이벤트 핸들러는 하나의 DomainEventEnvelope형 매개변수를 받는다. 이벤트와 이벤트에 관한 메타데이터가 이 매개변수에 담겨 있다
+- 이벤트가 발생하면 handleOrderCreated(), handleDeliveryPickedUp() 두 메서드중 알맞는 메서드가 호출된다
+- makeSourceEvent()는 이벤트를 발생시킨 애그리거트 타입과 ID, 그리고 이벤트 ID가 포함된 SourceEvent를 생성한다
+
+### DynamoDB 데이터 모델링 및 쿼리 설계
+
+- 다른 NoSQL DB처럼 DynamoDB도 데이터 접근 능력이 RDBMS에 훨씬 못 미치는 수준이기 때문에 데이터를 어떻게 저장하면 좋을지 잘 설계해야 한다
+- 다음과 같은 설계 이슈를 검토해야한다
+  - ftgo-order-history 테이블의 설계
+  - findOrderHistory 쿼리 전용 인덱스 정의
+  - findOrderHistory 쿼리 구현
+  - 쿼리 결과 페이지네이션
+  - 주문 업데이트
+  - 중복 이벤트 감지
+  
+#### ftgo-order-history 테이블의 설계
+
+- DynamoDB의 저장 모델은 아이템이 테이블과 인덱스로 구성된다. 테이블은 아이템을 담고 있고, 인덱스는 테이블 아이템에 접근하는 대체 수단을 제공한다. 아이템은 네임드 속성 컬렉션이다
+- OrderHistoryDataAccess 모듈은 각 Order를 DynamoDB 테이블 ftgo-order-history의 아이템 하나로 저장할 수 있다
+
+![그림7-10](../images/msa/images7-10.png)
+
+#### findOrderHistory 쿼리 전용 인덱스 정의
+
+- ftgo-order-history 테이블은 기본키로 Order를 조회/수정할 수 있게 지원하지만 최근 순서로 정렬된 주문 검색 결과를 여럿 반환하는 findOrderHistory() 같은 쿼리는 지원하지 않는다
+- DynamoDB의 query()작업은 두 스칼라 속성이 조합된 기본키를 갖고 있어야 수행 가능한 작업이다
+- 첫 번째 속성은 파티션 키이다. DynamoDB가 Z축 확장(데이터 분할)할 때 이 키를 보고 아이템의 저장소 파티션을 선택한다
+- 두 번째 속성은 정렬 키이다. query()작업은 필터 표현식(옵션)에 맞는 아이템 목록을 주어진 정렬 키로 정렬하여 반환한다
+- findOrderHistory()는 customerId가 파티션 키, orderCreationDate가 정렬 키인 기본키가 있어야 하는데 이 둘은 유일한 데이터를 가리키지 않는다
+- 해결 방법은 (customerId, orderCreationDate)를 보조인덱스로 non-unique 키로 갖고 있는 것이다
+- RDBMS 인덱스와는 다르게 비식별 속성(orderId, status)을 가질 수 있다
+
+![그림7-11](../images/msa/images7-11.png)
+
+- 인덱스로 최근 순서로 정렬된 소비자 주문 정보를 효율적으로 조회할 수 있다
+
+#### findOrderHistory 쿼리 구현
+
+- findOrderHistory() 쿼리 작업에는 검색 기준(주문 조회 시작/종료 일자)에 해당하는 filter라는 필터 매개변수가 있다. DynamoDB의 query()작업은 정렬 키에 범위 제약을 걸 수 있는 조건 표현식을 지원하여 쉽게 구현할 수 있다
+- 그 밖의 비식별 속성에 해당되는 검색 기준은 boolean 표현식인 필터 표현식으로 구현 가능하다. (ex. orderStatus = :orderStatus)
+
+#### 쿼리 결과 페이지네이션
+
+- 주문을 많이 한 소비자도 있기 때문에 findOrderHistory() 쿼리에 페이지네이션을 적용해야 한다. 내부적으로 기능을 제공한다
+
+#### 주문 업데이트
+
+- DynamoDB는 아이템을 추가/수정하는 PutItem(), UpdateItem() 작업을 각각 제공한다.
+- PutItem()은 기본키로 찾은 아이템을 생성 또는 대체하는 작업으로 동일한 아이템을 동시 업데이트할 경우 정확히 처리된다는 보장이 없다
+- UpdateItem()은 개별 아이템 속성을 업데이트하고, 필요 시 아이템을 생성하는 작업이다. 서로 다른 이벤트 핸들러가 상이한 Order 아이템 속성을 업데이트하므로 이 메서드를 활용하는 것이 맞다
+
+#### 중복 이벤트 감지
