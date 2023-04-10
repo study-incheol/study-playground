@@ -321,3 +321,57 @@
 - UpdateItem()은 개별 아이템 속성을 업데이트하고, 필요 시 아이템을 생성하는 작업이다. 서로 다른 이벤트 핸들러가 상이한 Order 아이템 속성을 업데이트하므로 이 메서드를 활용하는 것이 맞다
 
 #### 중복 이벤트 감지
+
+- 주문 이력 서비스의 모든 이벤트 핸들러는 멱등하다. 따라서 중복 이벤트 문제는 그냥 무시하고 넘어갈 수도 있지만, 중복 이벤트를 접수한 이벤트 핸들러가 Order 아이템 속성을 과거 값으로 세팅할 가능성은 항상 있기 때문에 일시적으로 최신 상태가 아닐 수 있다. 이런 Order 아이템은 나중에 이벤트가 재전달될 때까지는 정확한 값이 아니다
+- OrderHistoryDaoDynamoDb는 아이템마다 업데이트를 일으킨 이벤트를 일일이 기록해서 중복 이벤트를 감지한다
+- UpdateItem() 작업의 조건부 업데이트 메커니즘을 활용하면 중복 이벤트가 아닐 때에만 아이템을 업데이트 할 수 있다
+- OrderHistoryDaoDynamoDb DAO는 (수신한 이벤트 ID의 최댓값과 동일한) 애그리거트 타입 + 애그리거트 ID 속성을 이용하여 각 애그리거트 인스턴스에서 전달받은 이벤트를 추적할 수 있다. 즉 이 속성이 이미 존재하고 그 값이 자신의 ID 보다 같거나 작은 이벤트면 중복 이벤트이다
+- 조건부 표현식은 속성이 존재하지 않거나 eventId가 가장 마지막에 처리된 이벤트 ID보다 클 경우에만 업데이트를 허용한다
+
+### OrderHistoryDaoDynamoDb 클래스
+
+- OrderHistoryDaoDynamoDb는 ftgo-order-history 테이블의 아이템을 읽고 쓰는 메서드가 구현된 클래스이다
+- 이 클래스의 업데이트 메서드는 OrderHistoryEventHandler가, 쿼리 메서드는 OrderHistoryQuery API가 각각 호출한다
+
+#### addOrder() 메서드
+
+- addOrder()는 order, sourceEvent 두 매개변수를 받아 ftgo-order-history 테이블에 Order를 추가하는 메서드이다
+- OrderCreated 이벤트에서 획득한 Order를 order 매개변수로 받아 추가한다. sourceEvent에는 이벤트를 발생시킨 애그리거트의 aggregateType, aggregateId, eventId가 있다. sourceEvent는 조건부 업데이트를 구현하는 용도로 쓰인다
+- addOrder()는 AWS SDK의 일부로서 업데이트 작업이 기술된 UpdateItemSpec을 생성한다. 그런 다음 중복 업데이트를 방지하는 조건부 표현식을 추가한 후 업데이트를 수행하는 헬퍼 메서드 idempotentUpdate()를 호출한다
+
+![그림7-12](../images/msa/images7-12.png)
+
+#### notePickedUp() 메서드
+
+- notePickedUp()은 DeliveryPickedUp 이벤트 핸들러가 호출하는 메서드이다. Order 아이템의 deliveryStatus를 PICKED_UP으로 변경한다
+- UpdateItemSpec을 생성 후 idempotentUpdate()를 호출하는 로직은 addOrder()와 같다
+
+![그림7-13](../images/msa/images7-13.png)
+
+#### idempotentUpdate() 메서드
+
+- idempotentUpdate()는 중복 업데이트를 방지하는 UpdateItemSpec에 조건부 표현식을 후가한 후 아이템을 업데이트한다
+- sourceEvent를 받은 idempotentUpdate()는 SourceEvent.addDuplicateDetection()을 호출해서 조건부 표현식을 UpdateItemSpec에 추가한다.
+- 중복 이벤트일 경우 updateItem()이 던진 ConditionalCheckFailedException 예외를 잡아 아무 일도 하지 않는다
+
+![그림7-14](../images/msa/images7-14.png)
+
+#### findOrderHistory() 메서드
+
+- findOrderHistory()는 보조 인덱스 ftgo-order-history-by-consumer-id-and-creation-time을 이용하여 ftgo-order-history 테이블을 쿼리해서 소비자 주문을 조회한다
+- 이 메서드는 소비자를 식별하는 consumerId와 필터 조건이 지정된 filter, 두 매개변수를 전달받아 UpdateItemSpec처럼 AWS SDK에 내장된 QuerySpec을 생성한다. 그런 다음 인덱스를 쿼리하고, 그 결과 반환된 아이템을 OrderHistory 객체로 변환한다
+
+![그림7-15](../images/msa/images7-15.png)
+
+- 동시성을 잘 처리하고 업데이트의 멱등성을 보장해야 하므로 DAO만 코드가 다소 복잡하다
+
+## 마치며
+
+- 각 서비스 데이터는 프라이빗하기 때문에 여러 서비스의 데이터를 가져오는 쿼리는 구현하기 쉽지 않다
+- 여러 서비스의 데이터를 조회하는 쿼리는 크게 API 조합 패턴과 커맨드 쿼리 책임 분리(CQRS) 패턴으로 구현한다
+- 여러 서비스에서 데이터를 취합하는 API 조합 패턴은 쿼리를 구현하기 가장 간편한 방법이므로 가능하다면 많이 사용하는 것이 좋다
+- API 조합 패턴은 쿼리가 조금만 복잡해져도 대량 데이터를 인-메모리 조인해야 하므로 효율이 낮다
+- CQRS 패턴은 뷰 전용 DB를 이용하여 쿼리한다. 기능이 강력한 만큼 구현 복잡도는 높은 편이다
+- CQRS 뷰 모듈은 중복 이벤트 솎아 내기, 동시 업데이트 처리 기능을 갖추어야 한다
+- CQRS를 사용하면 한 서비스가 다른 서비스가 소유한 데이터를 반환하는 쿼리 구현도 가능하므로 관심사 분리 관점에서 유리하다
+- 클라이언트는 CQRS 뷰의 최종 일관성을 처리해야 한다
