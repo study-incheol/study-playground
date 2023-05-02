@@ -79,8 +79,12 @@
 3장에서 설명했듯이, 서비스간 상호작용은 다양합니다.
 
 * REST, gRPC 동기 프로토콜: REST API
+  * 클라이언트 최초 요청
 * 요청/비동기 응답: 커맨드 메시지
+  * 사가를 통해서 커맨드 진행
 * 발행/구독 형태의 비동기 메세징: 도메인 이벤트
+  * OrderEvent 구독 중: OrderHistoryEventHandlers
+  * OrderEvent 발행: OrderService
 
 ![img3](../images/msa/images9-3.png)
 
