@@ -28,3 +28,4 @@
   * [6장 비즈니스 로직 개발: 이벤트 소싱](msa-pattern/chap6.md)
   * [7장 마이크로서비스 쿼리 구현](msa-pattern/chap7.md)
   * [8장 외부 API 패턴](msa-pattern/chap8.md)
+  * [9장 마이크로서비스 테스트 1부](msa-pattern/chap9.md)
