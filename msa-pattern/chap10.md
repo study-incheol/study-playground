@@ -75,19 +75,19 @@ public class OrderJpaTest {
 - REST 계약에는 클라이언트가 전송하는 HTTP 요청과 서버가 반환하리라 기대되는 HTTP 응답을 지정한다
 
 ```jsx
-org.springframework.cloud.contract.spec.Contract.make {
-
-	request {
-		method 'GET'
-		url '/orders/12323'
-	}
-	reponse {
-		status 200
-		headers {
-			header('Content-Type' : 'application/json;charset=UTF-8')
-		}
-		body('''{"orderId" : "12323", "state" : "APPROVAL_PENDING"}''')
-	}
+org.springframework.cloud.contract.spec.Contract.make
+{
+  request {
+    method 'GET'
+    url '/orders/12323'
+  }
+  reponse {
+    status 200
+    headers {
+      header('Content-Type': 'application/json;charset=UTF-8')
+    }
+    body('''{"orderId" : "12323", "state" : "APPROVAL_PENDING"}''')
+  }
 }
 ```
 

@@ -41,9 +41,6 @@ w
 G.idea/sonarlint/issuestore/5/d/5dda1a8a36b999d8902c78cc0ffdc6e2b6f02594,d/8/d8dc56a32573540901a4a4deb440f241fa2ed6c3
 w
 G.idea/sonarlint/issuestore/9/7/976cb773efaab098c29aa1b45c274ff36c624d7c,7/7/77d157ddaa5d86741dbf0d9753a975376743fbc6
-:
-
-SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
 D
 msa-pattern/chap3.md,b/2/b208464471383eba1dc2058d70c2d6856ff714c5
 D
