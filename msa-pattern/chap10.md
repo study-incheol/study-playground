@@ -239,33 +239,9 @@ public abstract class DeliveryserviceMessagingBase {
 @AutoConfigureStubRunner(ids ={"net.chrisrichardson.ftgo:ftgo-order-service-contracts"})
 @DirtiesContext
 public class OrderHistoryEventHandlersTest {
-
-  @Configuration
-  @EnableAutoConfiguration
-  @Import({OrderHistoryServiceMessagingConfiguration.class,
-          TramCommandProducerConfiguration.class,
-          TramInMemoryCommonConfiguration.class,
-          TramNoopDuplicateMessageDetectorConfiguration.class,
-          EventuateContractVerifierConfiguration.class})
-  public static class TestConfiguration {
-
-    @Bean
-    public ChannelMapping channelMapping() {
-      return new DefaultChannelMapping.DefaultChannelMappingBuilder().build();
-    }
-
-    @Bean
-    public OrderHistoryDao orderHistoryDao() {
-      return mock(OrderHistoryDao.class); // OrderHistoryEventHandlers에 주입할 목 OrderhistoryDao 생성
-    }
-  }
-
-  @Autowired
-  private StubFinder stubFinder;
-
-  @Autowired
-  private OrderHistoryDao orderHistoryDao;
-
+  
+  ...
+  
   @Test
   public void shouldHandleOrderCreatedEvent() throws InterruptedException {
     when(orderHistoryDao.addOrder(any(Order.class), any(Optional.class))).thenReturn(false);
