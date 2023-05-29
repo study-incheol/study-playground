@@ -79,14 +79,14 @@ org.springframework.cloud.contract.spec.Contract.make
 {
   request {
     method 'GET'
-    url '/orders/12323'
+    url '/orders/99'
   }
   reponse {
     status 200
     headers {
       header('Content-Type': 'application/json;charset=UTF-8')
     }
-    body('''{"orderId" : "12323", "state" : "APPROVAL_PENDING"}''')
+    body('''{"orderId" : "99", "state" : "APPROVAL_PENDING"}''')
   }
 }
 ```
