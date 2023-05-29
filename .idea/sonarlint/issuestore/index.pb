@@ -19,8 +19,6 @@ E
 msa-pattern/README.md,6/c/6c95c53e22a87594d304762d795c71009b826c2f
 D
 msa-pattern/chap1.md,c/3/c3c850f0222795fac032013516dc76533a681c75
-D
-msa-pattern/chap2.md,9/7/976cb773efaab098c29aa1b45c274ff36c624d7c
 w
 G.idea/sonarlint/issuestore/6/8/68c788c01c983b7af5fb56ca0542374378f01640,f/c/fc13e9ad51b6023f40d7464109b24f5403b7ee92
 w
@@ -43,12 +41,12 @@ w
 G.idea/sonarlint/issuestore/5/d/5dda1a8a36b999d8902c78cc0ffdc6e2b6f02594,d/8/d8dc56a32573540901a4a4deb440f241fa2ed6c3
 w
 G.idea/sonarlint/issuestore/9/7/976cb773efaab098c29aa1b45c274ff36c624d7c,7/7/77d157ddaa5d86741dbf0d9753a975376743fbc6
-D
-msa-pattern/chap4.md,7/2/721cf1dd1a5bfafda30263df7d5b58c40cc21a83
-D
-msa-pattern/chap3.md,b/2/b208464471383eba1dc2058d70c2d6856ff714c5
 :
 
 SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
+D
+msa-pattern/chap3.md,b/2/b208464471383eba1dc2058d70c2d6856ff714c5
+D
+msa-pattern/chap4.md,7/2/721cf1dd1a5bfafda30263df7d5b58c40cc21a83
 D
 msa-pattern/chap5.md,b/3/b37fd5b445b27df9b5ad2578eafddaee46f74a8c
