@@ -60,6 +60,77 @@ public class OrderJpaTest {
 }
 ```
 
+## 🧐 테스트 코드에서 데이터베이스 환경은 어떻게 구축해야 할까?
+
+- 가장 간단하게 사용할 수 있는건 개발용 DB를 그대로 사용하면 된다
+- 개발용 DB를 사용하면서 테스트코드에 트랜잭션이 필요한 부분은 롤백 처리하면 간단하게 테스트 코드를 구현할 수 있다
+
+### 하지만, 개발용 DB를 사용하는 테스트 코드는 완벽하지 않다…
+
+- 일반적인 프로세스는 신규기능을 개발환경에서 확인하고 운영환경으로 배포하는 방식으로 진행한다
+- 그런데 개발환경에서 신규 기능을 구현하다보면 데이터베이스 스키마를 변경해야 하는 경우도 있고 추가하는 경우도 있다
+- 그러면 신규 스키마에 맞춰 테스트 코드를 수정하게 된다
+- 일반적이라면 개발환경에서는 테스트 코드가 이상없이 동작할 것이다
+
+### 그렇지만, 중간에 운영환경 소스코드를 재배포 해야 하거나 다시 빌드해야 하는 상황이 생기면 어떻게 될까?
+
+- 운영환경의 소스코드는 아직 개발환경의 소스코드가 모두 반영되지 않았으므로 테스트는 실패할것이다
+- 그러면 우리는 두 가지 방법 중에 하나를 선택할 것이다
+  - 하나는 실패하는 테스트 코드를 스킵 하는것이다
+  - 또 하나는 실패하는 테스트 코드만 반영하는 것이다
+- 두 방법 모두 만족하는 방법은 아니다
+- 결국 우리는 특정 환경에 종속받지 않는 테스트 환경에 필요한 데이터베이스가 필요하다
+- 가장 간단한 해결 방법은 테스트 환경 데이터베이스를 구축하는 것이다
+- 하지만 이는 비용이 많이 든다
+- 책에서는 실제로 데이터베이스를 구축 하지 않고 테스트 환경에서만 사용할 수 있는 방법을 제시해준다
+- 바로 `gradle-docker-compose-plugin` 플러그인을 사용하는 것이다
+- 그레이들을 통해서 테스트를 수행할 때 도커파일을 실행시킬수 있다
+- 그래서 데이터베이스 관련 도커 파일을 작성하고 해당 도커 파일을 테스트 환경에서 실행하도록 하면 실제 인프라 구축없이 독립된 데이터베이스 환경을 사용할 수 있다 
+
+  ```jsx
+  // build.gradle
+  
+  classpath "com.avast.gradle:gradle-docker-compose-plugin:0.16.12"
+  
+  ...
+  
+  apply plugin: 'docker-compose'
+  
+  ...
+  
+  dockerCompose.isRequiredBy(test)
+  
+  dockerCompose {
+          useComposeFiles = ['docker-compose.yml']
+          
+          captureContainersOutput = true
+          removeContainers = true
+          stopContainers = true
+  }
+  ```
+
+- docker-compose 파일
+
+  ```jsx
+  // docker-compose.yml
+  
+  version: "3"
+  
+  services:
+    mariadb:
+      image: mariadb:10.5
+      container_name: mariadb
+      ports:
+        - 3306:3306
+      environment:
+        TZ: Asia/Seoul
+        MYSQL_HOST: localhost
+        MYSQL_PORT: 3306
+        MYSQL_ROOT_PASSWORD: "password"
+        MYSQL_DATABASE: test
+      restart: always
+  ```
+
 # 통합 테스트: REST 요청/응답형 상호 작용
 
 - API 게이트웨이가 스텁에 어떤 HTTP 요청을 하는지 기술하고, 계약의 응답은 스텁이 API 게이트웨이에 어떤 응답을 돌려주는지 기술한다
