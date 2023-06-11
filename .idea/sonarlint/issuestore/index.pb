@@ -51,5 +51,8 @@ D
 msa-pattern/chap6.md,7/a/7a8bc54a97d065a129c68b286236a07c0a06a2de
 D
 msa-pattern/chap7.md,3/1/3134dbf5158fb749965d402168107a27ee08e0b3
+:
+
+SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
 D
-msa-pattern/chap8.md,e/9/e95e791ba18b2aff1387ebc7886c44bacc3ef3c5
+msa-pattern/chap9.md,1/7/17de50ba9a8af658852ce012ccccb1c88f335edc
