@@ -31,3 +31,4 @@
   * [9장 마이크로서비스 테스트 1부](msa-pattern/chap9.md)
   * [10장 마이크로서비스 테스트 2부](msa-pattern/chap10.md)
   * [11장 프로덕션 레디 서비스 개발](msa-pattern/chap11.md)
+  * [12장 마이크로서비스 배포](msa-pattern/chap12.md)
