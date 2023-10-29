@@ -13,10 +13,6 @@ W
 'core/ioc-container/1.3_bean_overview.md,1/e/1eef8c6ac2847a2d20a7c799e940205f577d71cc
 V
 &core/ioc-container/1.4_dependencies.md,b/b/bb3a218a430687d7d84d2f1f869f79b2321b8c12
-9
-	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-E
-msa-pattern/README.md,6/c/6c95c53e22a87594d304762d795c71009b826c2f
 D
 msa-pattern/chap1.md,c/3/c3c850f0222795fac032013516dc76533a681c75
 w
@@ -51,8 +47,5 @@ D
 msa-pattern/chap6.md,7/a/7a8bc54a97d065a129c68b286236a07c0a06a2de
 D
 msa-pattern/chap7.md,3/1/3134dbf5158fb749965d402168107a27ee08e0b3
-:
-
-SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
 D
 msa-pattern/chap9.md,1/7/17de50ba9a8af658852ce012ccccb1c88f335edc
