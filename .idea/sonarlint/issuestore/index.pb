@@ -49,3 +49,12 @@ D
 msa-pattern/chap7.md,3/1/3134dbf5158fb749965d402168107a27ee08e0b3
 D
 msa-pattern/chap9.md,1/7/17de50ba9a8af658852ce012ccccb1c88f335edc
+E
+msa-pattern/README.md,6/c/6c95c53e22a87594d304762d795c71009b826c2f
+F
+street-coder/README.md,f/e/fe3f98514d748c084e7e6ca6e920a7413878291b
+:
+
+SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
