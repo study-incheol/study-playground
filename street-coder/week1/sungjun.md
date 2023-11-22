@@ -14,33 +14,33 @@
 
 ## **📚 nullable**
 
-> \#nullable enable
-> public MoveResult MoveContents (TopicId from, TopicId to) {
-> // 실제 코드
-> return MoverResult.Success;
-> }
+> \#nullable enable \
+> public MoveResult MoveContents (TopicId from, TopicId to) { \
+> // 실제 코드 \
+> return MoverResult.Success; \
+> } \
 > \#nullable restore
 > 
-> 널 값 또는 nullable 값으로 MoveResult 함수를 호출하려고 하면 실핼 중간에 오류가 발생하는 대신 컴파일러에서 즉시 경고가 표시된다. 코드를 실행하기도 전에 오류를 확인할 수 있다.
-> 📕  68p  6번째 ( 2장)\
+> 널 값 또는 nullable 값으로 MoveResult 함수를 호출하려고 하면 실핼 중간에 오류가 발생하는 대신 컴파일러에서 즉시 경고가 표시된다. 코드를 실행하기도 전에 오류를 확인할 수 있다. \
+> 📕  68p  6번째 ( 2장)
 
 ### **🧐 : MoveContents 함수를 호출할때 파라미터 값이 null 값 또는 nullable 값으로 호출한다는 것을 컴파일러가 어떻게 알고 코드를 실행하기도 전에 오류를 확인한다는걸까**
 
 ## **📚 nullable2**
 
-> \#nullable enable
-> internal class ConferenceRegistration
-> {
-> public string CampaignSource { get; set; }
-> public string FirstName { get; set; }
-> public string? MiddleName { get; set; }
-> public string LastName { get; set; }
-> public string Email { get; set; }
-> public DateTimeOffset CreatedOn { get; set; }
-> }
-> \#nullable restore
+> \#nullable enable \
+> internal class ConferenceRegistration \
+> { \
+> public string CampaignSource { get; set; } \
+> public string FirstName { get; set; } \
+> public string? MiddleName { get; set; } \
+> public string LastName { get; set; } \
+> public string Email { get; set; } \
+> public DateTimeOffset CreatedOn { get; set; } \
+> } \
+> \#nullable restore \
 > 
-> 코드에서 클래스를 컴파일하려고 하면 non-nullable 선언된 모든 문자열, 즉 MiddleName과 CreatedOn을 제외한 모든 속성에 대해 컴파일러 경고가 표시된다.
+> 코드에서 클래스를 컴파일하려고 하면 non-nullable 선언된 모든 문자열, 즉 MiddleName과 CreatedOn을 제외한 모든 속성에 대해 컴파일러 경고가 표시된다. \
 > 📕  68p  13번째 ( 2장)
 >
 
