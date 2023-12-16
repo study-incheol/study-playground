@@ -1,7 +1,7 @@
 # 스트리트 코더
 ## 주차별 리뷰 내용
-### [1주차](./week1/summary.md)
-### [2주차](./week2/summary.md)
+### [1주차](week1/summary.md)
+### [2주차](week2/summary.md)
 
 ### 주차별 리뷰 범위
 

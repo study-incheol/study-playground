@@ -33,6 +33,6 @@
   * [11장 프로덕션 레디 서비스 개발](msa-pattern/chap11.md)
   * [12장 마이크로서비스 배포](msa-pattern/chap12.md)
   * [13장 마이크로서비스로 리팩터링](msa-pattern/chap13.md)
-* [스트리트 코더 리뷰](/street-coder/README.md)
+* [스트리트 코더 리뷰](street-coder/README.md)
   * [1주차 리뷰 내용](street-coder/week1/summary.md)
   * [2주차 리뷰 내용](street-coder/week2/summary.md)

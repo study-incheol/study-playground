@@ -4,7 +4,7 @@
 - 6장 조사를 통한 보안
 
 ## 리뷰한 내용
-- [인철](./incheol.md)
-- [동훈](./donghun.md)
-- [은지](./eunji.md)
-- [성준](./sungjun.md)
+- [인철](incheol.md)
+- [동훈](donghun.md)
+- [은지](eunji.md)
+- [성준](sungjun.md)
