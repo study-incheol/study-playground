@@ -40,3 +40,4 @@
     * [김은지](street-coder/week1/review/eunji.md)
     * [박성준](street-coder/week1/review/sungjun.md)
   * [2주차 리뷰 내용](street-coder/week2/summary.md)
+    * [정인철](street-coder/week2/review/incheol.md)
