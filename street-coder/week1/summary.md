@@ -8,7 +8,7 @@
 
 ### 리뷰한 내용
 
-* [인철](broken-reference)
-* [동훈](broken-reference)
-* [은지](broken-reference)
-* [성준](broken-reference)
+* [인철](incheol)
+* [동훈](donghun)
+* [은지](eunji)
+* [성준](sungjun)

@@ -60,18 +60,10 @@ SUMMARY.md,4/b/4bbcfa9786aa439063a424969a9609541306a72b
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
-M
-street-coder/week1/incheol.md,9/b/9b951f38a207c9f3ee3f84712bcb096b9c1a73c2
-M
-street-coder/week2/incheol.md,5/b/5b87db02167df61f9258bd8e4485e823f0cd8021
 E
 msa-pattern/chap13.md,b/d/bd54b336bd28be39b24c73c629cc999b62b8d4e1
 M
-street-coder/week1/donghun.md,0/9/093e0f51c5468a4c3d247700a1dbac26a3709c1e
-M
 street-coder/week1/summary.md,0/7/072421dea69eff75779adf297f012f15fe1c40ff
-M
-street-coder/week1/sungjun.md,7/2/72d19bc2dff8439b9d8565bc674b37e60038df6a
 M
 street-coder/week2/summary.md,e/d/edf4649de631d0e4597b4bf46d9966ad85130302
 T
@@ -96,3 +88,15 @@ r
 Bcore/ioc-container/1.9_annotation-based_container_configuration.md,1/7/1719bd7498d22871c10c83468d728cf3cdd0f02b
 m
 =core/ioc-container/1.11_using_jsr_330_standard_annotations.md,f/0/f099f63cc3a5cf60e4b69dc64ae608c5c61e69ec
+M
+street-coder/week1/sungjun.md,7/2/72d19bc2dff8439b9d8565bc674b37e60038df6a
+M
+street-coder/week1/incheol.md,9/b/9b951f38a207c9f3ee3f84712bcb096b9c1a73c2
+K
+street-coder/week1/eunji.md,0/5/053f441f4d6253e0cacc86271061decd96f02c91
+M
+street-coder/week1/donghun.md,0/9/093e0f51c5468a4c3d247700a1dbac26a3709c1e
+I
+street-coder/summary-1.md,6/2/62e43d3bfac7c9349c18c41927c1949784b519c2
+M
+street-coder/week2/incheol.md,5/b/5b87db02167df61f9258bd8e4485e823f0cd8021

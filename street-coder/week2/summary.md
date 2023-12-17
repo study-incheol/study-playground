@@ -8,7 +8,7 @@
 
 ### 리뷰한 내용
 
-* [인철](broken-reference)
+* [인철](./incheol)
 * [동훈](week2/donghun.md)
 * [은지](week2/eunji.md)
 * [성준](week2/sungjun.md)
