@@ -35,4 +35,8 @@
   * [13장 마이크로서비스로 리팩터링](msa-pattern/chap13.md)
 * [스트리트 코더 리뷰](street-coder/README.md)
   * [1주차 리뷰 내용](street-coder/week1/summary.md)
+    * [정인철](street-coder/week1/review/incheol.md)
+    * [심동훈](street-coder/week1/review/donghun.md)
+    * [김은지](street-coder/week1/review/eunji.md)
+    * [박성준](street-coder/week1/review/sungjun.md)
   * [2주차 리뷰 내용](street-coder/week2/summary.md)
