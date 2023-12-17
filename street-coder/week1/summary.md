@@ -8,15 +8,7 @@
 
 ### 리뷰한 내용
 
-
-
-
-
-{% content-ref url="review/incheol.md" %}
-[incheol.md](review/incheol.md)
-{% endcontent-ref %}
-
-* [인철](https://study-playground.gitbook.io/index/street-coder/summary/incheol)
-* [동훈](https://study-playground.gitbook.io/index/street-coder/summary/donghun)
-* [은지](https://study-playground.gitbook.io/index/street-coder/summary/eunji)
-* [성준](https://study-playground.gitbook.io/index/street-coder/summary/sungjun)
+* [인철](review/incheol)
+* [동훈](review/donghun)
+* [은지](review/eunji)
+* [성준](review/sungjun)
