@@ -8,7 +8,7 @@
 
 ### 리뷰한 내용
 
-* [인철](incheol)
-* [동훈](donghun)
-* [은지](eunji)
-* [성준](sungjun)
+* [인철](incheol.md)
+* [동훈](donghun.md)
+* [은지](eunji.md)
+* [성준](sungjun.md)
