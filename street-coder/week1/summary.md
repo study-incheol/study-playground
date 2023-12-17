@@ -4,7 +4,7 @@
 - 3장 유용한 안티패턴
 
 ## 리뷰한 내용
-- [인철](./review/incheol.md)
+- [인철](../week1/review/incheol.md)
 - [동훈](/street-coder/week1/review/donghun.md)
 - [은지](review/eunji.md)
 - [성준](review/sungjun.md)
