@@ -17,6 +17,6 @@
 {% endcontent-ref %}
 
 * [인철](https://study-playground.gitbook.io/index/street-coder/summary/incheol)
-* [동훈](https://study-playground.gitbook.io/index/street-coder/summary/donghoon)
+* [동훈](https://study-playground.gitbook.io/index/street-coder/summary/donghun)
 * [은지](https://study-playground.gitbook.io/index/street-coder/summary/eunji)
 * [성준](https://study-playground.gitbook.io/index/street-coder/summary/sungjun)
