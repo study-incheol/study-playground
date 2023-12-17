@@ -6,5 +6,5 @@
 ## 리뷰한 내용
 - [인철](../week1/review/incheol.md)
 - [동훈](/street-coder/week1/review/donghun.md)
-- [은지](review/eunji.md)
-- [성준](review/sungjun.md)
+- [은지](./review/eunji.md)
+- [성준](./review/sungjun.md)
