@@ -9,6 +9,6 @@
 ### 리뷰한 내용
 
 * [인철](./incheol.md)
-* [동훈](week2/donghun.md)
-* [은지](week2/eunji.md)
-* [성준](week2/sungjun.md)
+* [동훈](./donghun.md)
+* [은지](./eunji.md)
+* [성준](./sungjun.md)
