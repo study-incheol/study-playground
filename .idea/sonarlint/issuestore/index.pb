@@ -66,16 +66,6 @@ M
 street-coder/week1/summary.md,0/7/072421dea69eff75779adf297f012f15fe1c40ff
 M
 street-coder/week2/summary.md,e/d/edf4649de631d0e4597b4bf46d9966ad85130302
-T
-$street-coder/week1/review/incheol.md,6/7/672968f01fa3fd06542bdfcb3ca4d617f9830634
-T
-$street-coder/week1/review/donghun.md,3/4/34117f39ea6ff38d493925b0b3224e34b2324612
-T
-$street-coder/week2/review/incheol.md,2/6/267cad82313df403bd75711f9d9801cb0ce43cfa
-T
-$street-coder/week1/review/sungjun.md,2/1/21d6facee18c7e6aa45438fb39563a303b476715
-R
-"street-coder/week1/review/eunji.md,a/e/aeab7666f4c184fcfd9f49547acf76e159080174
 U
 %core/ioc-container/1.5_bean_scopes.md,b/4/b4f2f6f50c5cd99b246d087dbefdcd75e802c78c
 j
@@ -96,7 +86,9 @@ K
 street-coder/week1/eunji.md,0/5/053f441f4d6253e0cacc86271061decd96f02c91
 M
 street-coder/week1/donghun.md,0/9/093e0f51c5468a4c3d247700a1dbac26a3709c1e
-I
-street-coder/summary-1.md,6/2/62e43d3bfac7c9349c18c41927c1949784b519c2
 M
 street-coder/week2/incheol.md,5/b/5b87db02167df61f9258bd8e4485e823f0cd8021
+M
+street-coder/week3/summary.md,8/1/81c50e494e17ac14de49398b90893d907cda3c1c
+M
+street-coder/week3/incheol.md,4/d/4dccd485cadb2b836118f88ae9c8114b3b2f735d
