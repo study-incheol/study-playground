@@ -94,8 +94,6 @@ M
 street-coder/week3/incheol.md,4/d/4dccd485cadb2b836118f88ae9c8114b3b2f735d
 H
 effective-java/README.md,3/2/329d8a013c8482b04f816506a1b7fc26192ae4e7
-M
-effective-java/week1/eunji.md,d/8/d8208de70d671ed8bff55d5701e516e3826b4c47
 O
 effective-java/week1/summary.md,1/0/10c02418a99f8697764b932db2a1db02075769e1
 O
