@@ -54,7 +54,7 @@ Mosaic create(Supplier<? extends Tile> tileFactory) { ... }
 
 #### 아이템6. 불필요한 객체 생성을 피하라
 
-### 아이템 9. try-finally 보다는 try-with-resources를 사용하라
+#### 아이템 9. try-finally 보다는 try-with-resources를 사용하라
 
 # 📌 이해가 가지 않았던 내용
 #### 아이템7. 다 쓴 객체 참조를 해제하라
