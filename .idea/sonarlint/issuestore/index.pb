@@ -98,3 +98,5 @@ O
 effective-java/week1/summary.md,1/0/10c02418a99f8697764b932db2a1db02075769e1
 O
 effective-java/week1/incheol.md,d/8/d8f5cd28f9ea00a0fda930bab65b31741e3ead1b
+O
+effective-java/week2/incheol.md,2/8/285c0dd562f81517362188de0da04c214d99729c
