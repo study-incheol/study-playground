@@ -22,6 +22,9 @@ public static final Thing[] values() { return PRIVATE_VALUES.clone(); }
 #### 아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라
 - package-private 클래스나 private 중첩 클래스에서는 종종 필드를 노출하는 편이 나을 때도 있다.
 
+#### 아이템 19. 상속을 고려해 설계하고 문서화하라. 그러지 않았다면 상속을 금지하라
+#### 아이템 20. 추상클래스보다는 인터페이스를 우선하라
+- 상속을 권장하지 않는 것 같다.
 
 ## 📌 논의해보고 싶었던 내용
 - package-private 클래스를 사용하는 경우가 급궁금해졌다.
