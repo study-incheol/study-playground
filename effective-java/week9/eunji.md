@@ -78,8 +78,8 @@ public static <E> Iterable<E> iterableOf(Stream<E> stream) {
 * 항상 음이 아닌 BigInteger를 반환하다는 점에서 remainder 메서드와 다르다.
 *
 * @param m 계수(양수여야 한다.)
-* @return 현재 갑시 Mod m
-* @returm ArithmeticException m이 0보다 작거나 같으면 발생한다.
+* @return 현재 값이 Mod m
+* @throws ArithmeticException m이 0보다 작거나 같으면 발생한다.
 */
 public BigInteger mod(BigInteger m) {
 if (m.signum() <= 0)
