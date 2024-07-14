@@ -209,14 +209,14 @@ static int sum(int... args) {
     - 인수 개수가 일정하지 않은 메서드를 정의해야 한다면 가변인수가 반드시 필요하다
     - 매서드를 정의할 때 필수 매개변수는 가변인수 앞에 두고, 가변인수를 사용할 때는 성능 문제까지 고려하자
     
-    # 아이템 54. null이 아닌, 빈 컬렉션이나 배열을 반환하라
+# 아이템 54. null이 아닌, 빈 컬렉션이나 배열을 반환하라
     
-    ```jsx
-    public List<Cheese> getCheese() {
-    	return cheesesInStock.isEmpty() ? null
-    		: new ArrayList<>(cheeseInStock);
-    }
-    ```
+```jsx
+public List<Cheese> getCheese() {
+return cheesesInStock.isEmpty() ? null
+	: new ArrayList<>(cheeseInStock);
+}
+```
     
 - 이는 많이 볼수 있는 코드다
 - 하지만 이는 해당 메서드를 사용하는 쪽에서 null에 대한 방어 코드를 만들어두어야 하고, 그렇지 않으면 오류가 발생한다
