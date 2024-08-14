@@ -63,3 +63,43 @@ java 명명 규칙 (철자 & 문법) <--- 자바 언어 명세 JLS, 6.1에 기�
   - 객체의 내용을 다른 뷰로 보여주는 메서드의 이름은 asType (asList 등)
   - 객체의 값을 기본 타입 값으로 반환하는 메서드의 이름은 typeValue (intVlaue 등)
   - 정적 팩터리의 이름은 from, of, valueOf, instance, getInstsance, newInstance, getType, newType
+
+### 아이템 69 예외는 진짜 예외 상황에만 사용하라
+```java
+try {
+  int i = 0;
+  while(true)
+    range[i++].climb();
+} catch (ArrayIndexOutOfBoundsException e) {
+}
+```
+- **예외는 오직 예외 상황에서만 써야 한다. 절대로 일상적인 제어 흐름용으로 쓰여서는 안된다**
+- **잘 설계된 API라면 클라이언트가 정상적인 제어 흐름에서 예외를 사용할 일이 없게 해야 한다.**
+  - 특정 상태에서만 호출할 수 있는 상태 의존적 메서드를 제공하는 클래스는 상태 검사 메서드도 함께 제공해야 한다
+  - 예) Iterator 인터페이스의 next (상태 의존적 메서드) hasNext (상태 검사 메서드)
+  - ```
+    for (Iterator<Foo> i = collection.iterator(); i.hasNext(); } {
+      Foo foo = i.next();
+    ```
+    ```
+    // 이런식으로 순회하지 말 것!
+    try {
+      Iterator<Foo> i = collection.iterator();
+      while(true) {
+        Foo foo = i.nexxt();
+      }
+    } catch (NoSuchElementException e) {
+    }
+    ```
+  - 상태 검사 메서드 대신 사용할 수 있는 선택지 -> 올바르지 않은 상태일 때 빈 옵셔널 혹은 null 같은 특수한 값을 반환하는 방법
+    1. 외부 동기화 없이 여러 스레드가 동시에 접근할 수 있거나 외부 요인으로 상태가 변할 수 있다면 옵셔널이나 특정 값을 사용 (상태 검사 메서드와 상태 의존적 메서드 호출 사이에 객체의 상태가 변할 수 있기 때문)
+    2. 성능이 중요한 상황에서 상테 검사 메서드가 상태 의존적 메서드의 작업 일부를 중복 수행한다면 옵셔널이나 특정 값을 선택
+    3. 다른 모든 경우엔 상태 검사 메서드 방식이 조금 더 낫다. 
+
+### 아이템 70. 복구할 수 있는 상황에는 검사 예외를, 프로그래밍 오류에는 런타임 예외를 사용하라
+![image](https://github.com/user-attachments/assets/d8507db5-1711-4528-9cdb-4dd3f02580a1)
+
+- **호출하는 쪽에서 복구하리라 여겨지는 상황이라면 검사 예외를 사용하라**
+- **프로그래밍 오류를 나타낼 때는 런타임 예외를 사용하자**
+- 에러는 보통 JVM이 자원 부족, 불변식 깨짐 등 더 이상 수행을 계속할 수 없는 상황을 나타낼 때 사용 -> Error 클래스를 상속해 하위 클래스를 만드는 일은 자제하
+- **우리가 구현하는 비검사 throwable은 모두 RuntimeException 의 하위 클래스여야 함**
