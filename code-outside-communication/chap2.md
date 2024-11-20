@@ -20,10 +20,12 @@
 - 상자를 과도하게 사용하며 선이 많아져 시각적으로 혼라스러워지고 시간을 낭비하게 됨
 
 상자 속 상자 속 상자 안티패턴 (boxes in boxes in boxes antipattern)
+<img src= "https://github.com/user-attachments/assets/0ea7305b-2611-4841-b9fc-96e4ea65f05f" width=400 height=200>
+<img src= "https://github.com/user-attachments/assets/70c4ea00-67df-4e01-86ee-2196c9a915e7" width=400 height=200>
 
 [그림 2-3] -> [그림 2-4]
 - 일부 상자를 레이블이나 메모로 대체하여 상자가 전달하는 의미의 수를 줄였다
-- 메시지 전달응ㄹ 위해 별도로 분리할 필요가 없어 상자를 병합했다
+- 메시지 전달을 위해 별도로 분리할 필요가 없어 상자를 병합했다
 - 남아 있는 상자는 색상과 패턴(실선, 색상 배경)을 사용하여 구분했다.
 
 (팁1) 공백은 다이어그램의 내용만큼이나 중요하다. 눈이 쉴 수 있는 공간을 제공하여 인지 부하를 줄여주고, 가독성을 높여준다.
