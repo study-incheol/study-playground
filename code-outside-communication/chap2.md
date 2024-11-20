@@ -20,6 +20,7 @@
 - 상자를 과도하게 사용하며 선이 많아져 시각적으로 혼라스러워지고 시간을 낭비하게 됨
 
 상자 속 상자 속 상자 안티패턴 (boxes in boxes in boxes antipattern)
+
 <img src= "https://github.com/user-attachments/assets/0ea7305b-2611-4841-b9fc-96e4ea65f05f" width=400 height=200>
 <img src= "https://github.com/user-attachments/assets/70c4ea00-67df-4e01-86ee-2196c9a915e7" width=400 height=200>
 
