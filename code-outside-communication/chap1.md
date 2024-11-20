@@ -15,13 +15,19 @@
 - 다이어그램의 목적은 독자와 성공적으로 소통하는 것
 - 이를 위해서 독자가 누군지 파악하고, 이들의 요구 사항에 맞게 다이어그램을 디자인해야 함
 
+<img src="https://github.com/user-attachments/assets/d45a196f-d971-4f6d-ba69-feaadf13058d" width="300" height="150">
+
 [그림 1-1] UML 클래스 다이어그램
 - 이 다이어그램은 개발자, 아키텍트, 데이터베이스 관리자 등 IT 독자를 겨냥한 것
 - PO나 PM은 이 다이어그램의 정보가 필요하지 않거나 추가적인 설명이 없어도 해당 내용을 충분히 이해할 수 있음
 
+<img src="https://github.com/user-attachments/assets/df19cd07-c4cd-42cb-9aab-400d3537f276" width="300" height="150">
+
 [그림 1-2] C4 컨텍스트 다이어그램
 - 활용도가 높고 시스템의 전반적인 그림을 보여주고 있어 IT 독자, 비즈니스 독자 모두에게 적합
 - PO, PM, 아키텍트, 개발자, 비즈니스 애널리스트 모두에게 적합
+
+<img src="https://github.com/user-attachments/assets/787ddd59-9ad9-4d12-95b0-690597f8b40d" width="300" height="150">
 
 [그림 1-3] 도메인 스토리 다이어그램
 - 비즈니스적 요구 사항을 기술적 솔루션으로 해석해야 하는 기술적 역할에 적합
@@ -60,6 +66,7 @@
   3. 컴포넌트 레벨 (한 컨테이너를 이전 레벨보다 더 확대. 컨테이너 내의 컴포넌트와 컴포넌트 간의, 그리고 컴포넌트와 외부 개체의 상호작용을 보여줌)
   4. 코드 레벨 (특정 컴포넌트를 이전 레벨보다 더 확대. 컴포넌트가 어떻게 구현되었는지 보여준다. 이 레벨에는 문서에 필요한 것 이상의 자세한 내용이 있다)
 
+
 [그림 1-5] 추상화의 컨텍스트 및 컨테이너 레벨을 둘 다 보여주는 C4 다이어그램
 
 [그림 1-6] 외부 시스템과 행위자에 초점을 맞춤
@@ -72,13 +79,20 @@
 - 개별 다이어그램을 연결하여 독자가 다이어그램을 탐색하고 어떻게 연관되는지 확인할 수 있도록 해줌
 - 독자가 다이어그램 간의 관계를 이해하는 데 너무 많은 노력을 들이거나 다이어그램을 이해하는 데 기억해야 할 중요한 사항이 있는 경우 실패 확률이 올라간다
 
+<img src="https://github.com/user-attachments/assets/d05fa8ac-1502-491c-8d8c-5ef0482c35af" width="400" height="200">
+
 [그림 1-8] 하이레벨
+
+<img src="https://github.com/user-attachments/assets/dce7f5d7-faf1-40c5-b241-684a81311e05" width="200" height="400">
 
 [그림 1-9]
 - 그림 1-8의 중앙 상자와 동일한 레이블이 왼쪽 하단 모서리에 있음
 - 독자는 어느 다이어그램을 먼저 보든 두 다이어그램 간의 연관성을 이해할 수 있게 됨
 
 - 데이터 흐름도는 숫자와 문자를 사용해 구성 요소를 설명
+<img src="https://github.com/user-attachments/assets/00b8c3e7-db77-4b51-a628-59f9e7c15029" width="300" height="150">
+<img src="https://github.com/user-attachments/assets/feae04c0-038a-4112-a0d6-99e82a509dec" width="300" height="150">
+<img src="https://github.com/user-attachments/assets/8ca91e4a-dcd9-457f-b0d4-020d04593927" width="300" height="150">
 
 [그림 1-10] [그림 1-11] [그림1-12]
 - 1,2,3 .. A,B, ... 1.1, 1.2, 2.1,2.2 ,... 이렇게 일관된 숫자와 문자를 사용함
