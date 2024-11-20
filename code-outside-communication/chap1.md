@@ -89,7 +89,7 @@
 - 그림 1-8의 중앙 상자와 동일한 레이블이 왼쪽 하단 모서리에 있음
 - 독자는 어느 다이어그램을 먼저 보든 두 다이어그램 간의 연관성을 이해할 수 있게 됨
 
-- 데이터 흐름도는 숫자와 문자를 사용해 구성 요소를 설명
+데이터 흐름도는 숫자와 문자를 사용해 구성 요소를 설명
 <img src="https://github.com/user-attachments/assets/00b8c3e7-db77-4b51-a628-59f9e7c15029" width="300" height="150">
 <img src="https://github.com/user-attachments/assets/feae04c0-038a-4112-a0d6-99e82a509dec" width="300" height="150">
 <img src="https://github.com/user-attachments/assets/8ca91e4a-dcd9-457f-b0d4-020d04593927" width="300" height="150">
