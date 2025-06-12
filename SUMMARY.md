@@ -36,6 +36,6 @@
 * [스트리트 코더 리뷰](street-coder/README.md)
   * [1주차 리뷰 내용](street-coder/week1/summary.md)
   * [2주차 리뷰 내용](street-coder/week2/summary.md)
-* [Virtual Thread](virtual thread/README.md)
-  * [Virtual Thread](virtual thread/sungjun.md)
+* [Virtual Thread](virtual-thread/README.md)
+  * [Virtual Thread](virtual-thread/sungjun.md)
 
